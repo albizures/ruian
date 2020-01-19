@@ -10,6 +10,14 @@ const Flex = styled.div`
   }
 `;
 
+const Card = styled.div`
+  background: white;
+  border-radius: 0.5em;
+  box-shadow: rgba(184, 194, 215, 0.35) 0px 3px 6px 0px;
+  margin: 4px;
+  padding: 8px;
+`;
+
 const GlobalStyles = () => (
   <Global
     styles={css`
@@ -31,4 +39,4 @@ const GlobalStyles = () => (
   />
 );
 
-export { Flex, GlobalStyles };
+export { Flex, GlobalStyles, Card };

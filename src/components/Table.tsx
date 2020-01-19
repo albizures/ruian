@@ -1,5 +1,4 @@
 import React from 'react';
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { Genders, Cases, endings } from '../endings';
 
@@ -26,7 +25,7 @@ const Tr = styled.tr``;
 
 const StyledTable = styled.table`
   border-collapse: collapse;
-  margin-right: 18px;
+  margin-right: 8px;
   overflow: auto;
 `;
 

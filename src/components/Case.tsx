@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Table from './Table';
+import { Card } from './elements';
 import { Genders, Cases, endings } from '../endings';
 
 interface PropTypes {
@@ -19,14 +20,6 @@ const TablesContainer = styled.div`
   @media (max-width: 420px) {
     align-items: center;
   }
-`;
-
-const Container = styled.div`
-  background: white;
-  border-radius: 0.5em;
-  box-shadow: rgba(184, 194, 215, 0.35) 0px 3px 6px 0px;
-  margin: 4px;
-  padding: 8px;
 `;
 
 const Title = styled.h3`
@@ -49,7 +42,7 @@ const Case: React.FC<PropTypes> = (props) => {
     ));
 
   return (
-    <Container>
+    <Card>
       <Title>{name}</Title>
 
       <TablesContainer>
@@ -58,7 +51,7 @@ const Case: React.FC<PropTypes> = (props) => {
         <Table {...props} gender={Genders.Neuter} />
       </TablesContainer>
       {footNotes}
-    </Container>
+    </Card>
   );
 };
 
