@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
-  @media (min-width: 420px) {
+  @media (max-width: 420px) {
     flex-flow: column;
   }
 `;

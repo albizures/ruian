@@ -27,6 +27,7 @@ const Tr = styled.tr``;
 const StyledTable = styled.table`
   border-collapse: collapse;
   margin-right: 18px;
+  overflow: auto;
 `;
 
 const Table: React.FC<PropTypes> = (props) => {

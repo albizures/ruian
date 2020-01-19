@@ -14,8 +14,10 @@ const TablesContainer = styled.div`
     margin-right: 0;
   }
 
-  @media (min-width: 420px) {
-    justify-content: center;
+  overflow: auto;
+
+  @media (max-width: 420px) {
+    align-items: center;
   }
 `;
 
