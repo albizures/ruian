@@ -1,0 +1,26 @@
+{
+  "name": "ruian",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
+    "@mdx-js/loader": "^1.5.5",
+    "@next/mdx": "^9.2.0",
+    "next": "^9.2.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.8",
+    "@types/react": "^16.9.17",
+    "babel-plugin-emotion": "^10.0.27"
+  }
+}
