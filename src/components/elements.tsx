@@ -16,6 +16,7 @@ const Card = styled.div`
   box-shadow: rgba(184, 194, 215, 0.35) 0px 3px 6px 0px;
   margin: 4px;
   padding: 8px;
+  overflow: auto;
 `;
 
 const GlobalStyles = () => (

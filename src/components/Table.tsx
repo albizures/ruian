@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Genders, Cases, endings } from '../endings';
+
+interface Row {
+  [key: string]: string;
+}
 
 interface PropTypes {
-  case: Cases;
-  gender: Genders;
+  headers: string[];
+  rows: Row[];
 }
 
 const Td = styled.td`
@@ -30,13 +33,10 @@ const StyledTable = styled.table`
 `;
 
 const Table: React.FC<PropTypes> = (props) => {
-  const rows = endings[props.case][props.gender];
-
+  const { rows, headers } = props;
   if (rows.length === 0) {
     return null;
   }
-
-  const headers = Object.keys(rows[0]);
 
   return (
     <StyledTable>

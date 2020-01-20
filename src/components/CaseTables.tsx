@@ -1,4 +1,4 @@
-import { Cases } from '../endings';
+import { Cases } from '../types';
 import Case from './Case';
 import { Flex } from './elements';
 

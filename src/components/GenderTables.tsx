@@ -1,10 +1,13 @@
-import { Cases, Genders } from '../endings';
-import Table from './Table';
+import React from 'react';
+import { Cases, Genders } from '../types';
+import Table from './EndingTable';
 import { Flex, Card } from './elements';
 import styled from '@emotion/styled';
 
 const Container = styled(Card)`
   display: flex;
+  overflow: auto;
+
   & > table:last-child {
     margin-right: 0;
   }

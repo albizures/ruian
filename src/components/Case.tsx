@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import Table from './Table';
+import Table from './EndingTable';
 import { Card } from './elements';
-import { Genders, Cases, endings } from '../endings';
+import { Genders, Cases } from '../types';
+import { cases } from '../cases';
 
 interface PropTypes {
   case: Cases;
@@ -31,7 +32,7 @@ const Title = styled.h3`
 `;
 
 const Case: React.FC<PropTypes> = (props) => {
-  const { name, notes } = endings[props.case];
+  const { name, notes } = cases[props.case];
 
   const footNotes =
     notes &&
