@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import { pronouns } from '../pronouns';
 import { verbs } from '../verbs';
 import Layout from '../components/Layout';
@@ -7,10 +8,12 @@ import {
 	openReversoConjugation,
 	openCoolConjugation,
 	openTranslation,
-	getRandomElement,
 	openReversoContext,
+	getCombinations,
+	suffleItems,
 } from '../utils';
-import styled from '@emotion/styled';
+import { Card } from '../components/elements';
+import { useList } from '../hooks/useList';
 
 const getLastIndex = () => {
 	const lastVerbIndex = Number(localStorage.getItem('lastVerbIndex'));
@@ -18,50 +21,129 @@ const getLastIndex = () => {
 	return Number.isNaN(lastVerbIndex) ? 0 : lastVerbIndex;
 };
 
-const createPronounList = () => {
-	const first = pronouns.map(() => getRandomElement(pronouns));
-	const second = pronouns.map((_pronoun, index) => {
-		let pronoun = getRandomElement(pronouns);
-		while (first[index] === pronoun) {
-			pronoun = getRandomElement(pronouns);
-		}
+const pronounCombinations = getCombinations(pronouns).filter(
+	([first, second]) => {
+		return !(
+			(first === 'я' && second === 'мы') ||
+			(second === 'я' && first === 'мы')
+		);
+	},
+);
 
-		return pronoun;
-	});
-	return {
-		first,
-		second,
-	};
+const getPronounList = () => {
+	return suffleItems(pronounCombinations);
 };
 
-const defaultPronounList = createPronounList();
+const defaultPronounList = getPronounList();
 
 const H4 = styled.div`
 	margin-bottom: 4px;
 `;
 
+const CurrentPronounPair = styled.div`
+	font-size: 2rem;
+`;
+
+const NotCurrentPronounPair = styled.div`
+	font-size: 1.5rem;
+	min-height: 32px;
+`;
+
+const PronounPairs = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+
+	&::after {
+		content: '';
+		pointer-events: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 1) 0%,
+			rgba(0, 0, 0, 0) 30%,
+			rgba(0, 0, 0, 0) 70%,
+			rgba(255, 255, 255, 1) 100%
+		);
+	}
+`;
+
+const VerbContainers = styled.div`
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	margin: 10px 0;
+`;
+
+const NotButton = styled.button`
+	background: transparent;
+	font-size: inherit;
+	border: 0;
+	margin: 0;
+	padding: 0;
+`;
+
+const Verb = styled.h1`
+	font-size: 3rem;
+	margin: 10px 0;
+	width: 500px;
+`;
+
+const Index = styled.h2`
+	font-size: 1.5rem;
+	margin: 0;
+	padding: 0;
+`;
+
 const EachVerb: React.FC = () => {
-	const [index, setIndex] = React.useState(0);
-	const [{ first, second }, setPronounList] = React.useState(
-		defaultPronounList,
-	);
-	const verb = verbs[index];
+	const [pronounList, setPronounList] = React.useState(defaultPronounList);
+
+	const {
+		setIndex: setPronounPairIndex,
+		current: pronounPair,
+		next: nextPronounPair,
+		prev: prevPronounPair,
+		selectNext: selectNextPronounPair,
+		selectPrev: selectPrevPronounPair,
+	} = useList({
+		list: pronounList,
+	});
+
+	const {
+		index,
+		current: verb,
+		setIndex,
+		next: nextVerb,
+		prev: prevVerb,
+		selectNext: selectNextVerb,
+		selectPrev: selectPrevVerb,
+	} = useList({
+		list: verbs,
+		loop: true,
+	});
 
 	React.useEffect(() => {
 		const lastIndex = getLastIndex();
 
 		setIndex(verbs.length < lastIndex ? 0 : lastIndex);
-	}, []);
+	}, [setIndex]);
 
 	const onNext = () => {
-		const newIndex = index + 1;
-		setIndex(verbs.length < newIndex ? 0 : newIndex);
+		selectNextVerb();
+		setPronounList(getPronounList());
+		setPronounPairIndex(0);
 		localStorage.setItem('lastVerbIndex', String(index));
 	};
 
 	const onPrevius = () => {
-		const newIndex = index - 1;
-		setIndex(newIndex < 0 ? verbs.length - 1 : newIndex);
+		selectPrevVerb();
+		setPronounList(getPronounList());
+		setPronounPairIndex(0);
 		localStorage.setItem('lastVerbIndex', String(index));
 	};
 
@@ -81,12 +163,54 @@ const EachVerb: React.FC = () => {
 		openReversoContext();
 	};
 
+	React.useEffect(() => {
+		const onKeyUp = (event: KeyboardEvent) => {
+			if (event.key === 'ArrowDown') {
+				selectNextPronounPair();
+				event.preventDefault();
+			}
+			if (event.key === 'ArrowUp') {
+				selectPrevPronounPair();
+				event.preventDefault();
+			}
+			if (event.key === 'ArrowRight') {
+				selectNextVerb();
+				event.preventDefault();
+			}
+			if (event.key === 'ArrowLeft') {
+				selectPrevVerb();
+				event.preventDefault();
+			}
+		};
+		window.addEventListener('keyup', onKeyUp);
+		return () => {
+			window.removeEventListener('keyup', onKeyUp);
+		};
+	}, [
+		selectNextPronounPair,
+		selectPrevPronounPair,
+		selectNextVerb,
+		selectPrevVerb,
+	]);
+
 	return (
 		<Layout>
+			<div className="centered-text">
+				<VerbContainers>
+					<button className="emoji button" onClick={onPrevius}>
+						⬅️
+					</button>
+					<div>
+						<Index className="centered-text">{index + 1}</Index>
+						<Verb className="centered-text">{verb}</Verb>
+					</div>
+					<button className="emoji button" onClick={onNext}>
+						➡️
+					</button>
+				</VerbContainers>
+			</div>
 			<div className="flex space-evenly">
 				<div>
-					<h3 className="centered-text">{index + 1}</h3>
-					<h1 className="centered-text">{verb}</h1>
 					<div className="centered-text">
 						<div>
 							<H4 className="centered-text">Specific links</H4>
@@ -106,29 +230,31 @@ const EachVerb: React.FC = () => {
 								Context Reverson
 							</button>
 						</div>
-						<div>
-							<H4 className="centered-text">Actions</H4>
-							<button className="emoji button" onClick={onPrevius}>
-								⬅️
-							</button>
-							<button className="emoji button" onClick={onNext}>
-								➡️
-							</button>
-						</div>
 					</div>
 				</div>
 				<div>
 					<div className="flex centered-flex ">
-						<ul>
-							{first.map((pronoun, index) => (
-								<li key={index}>{pronoun}</li>
-							))}
-						</ul>
-						<ul>
-							{second.map((pronoun, index) => (
-								<li key={index}>{pronoun}</li>
-							))}
-						</ul>
+						<Card style={{ width: '100%' }}>
+							<PronounPairs>
+								<NotCurrentPronounPair>
+									{prevPronounPair && (
+										<NotButton onClick={selectPrevPronounPair}>
+											{prevPronounPair[0]} - {prevPronounPair[1]}
+										</NotButton>
+									)}
+								</NotCurrentPronounPair>
+								<CurrentPronounPair>
+									{pronounPair[0]} - {pronounPair[1]}
+								</CurrentPronounPair>
+								<NotCurrentPronounPair>
+									{nextPronounPair && (
+										<NotButton onClick={selectNextPronounPair}>
+											{nextPronounPair[0]} - {nextPronounPair[1]}
+										</NotButton>
+									)}
+								</NotCurrentPronounPair>
+							</PronounPairs>
+						</Card>
 					</div>
 					<Pronouns />
 				</div>

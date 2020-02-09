@@ -101,7 +101,7 @@ const openCoolConjugation = (verb: string) => {
 };
 
 const openReversoContext = () => {
-	open(`https://context.reverso.net/перевод/русский-английский/`);
+	open(`https://context.reverso.net/translation/russian-english`);
 };
 
 const openPages = (verb: string) => {
@@ -120,6 +120,28 @@ function* eachVerb(offset = 0) {
 	}
 }
 
+const getCombinations = <T>(items: T[]): [T, T][] => {
+	let combinations = [];
+
+	for (let i = 0; i < items.length - 1; i++) {
+		for (let j = i + 1; j < items.length; j++) {
+			combinations.push([items[i], items[j]]);
+		}
+	}
+
+	return combinations;
+};
+
+const suffleItems = <T>(items: T[]): T[] => {
+	const suffledItems = [].concat(items);
+	for (let i = suffledItems.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+
+		[suffledItems[i], suffledItems[j]] = [suffledItems[j], suffledItems[i]];
+	}
+	return suffledItems;
+};
+
 export {
 	eachVerb,
 	openPages,
@@ -129,4 +151,6 @@ export {
 	openCoolConjugation,
 	openTranslation,
 	getRandomElement,
+	getCombinations,
+	suffleItems,
 };
