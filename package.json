@@ -11,14 +11,20 @@
   "dependencies": {
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
+    "await-to-js": "^2.1.1",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash.memoize": "^4.1.2",
     "next": "^9.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "typescript": "^3.7.5"
   },
   "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.35",
+    "@types/lodash.memoize": "^4.1.6",
     "@types/node": "^13.1.8",
     "@types/react": "^16.9.17",
-    "babel-plugin-emotion": "^10.0.27"
+    "babel-plugin-emotion": "^10.0.27",
+    "dotenv": "^8.2.0"
   }
 }
