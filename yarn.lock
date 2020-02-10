@@ -3847,6 +3847,11 @@ num2fraction@^1.2.2:
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
+number-to-words-ru@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/number-to-words-ru/-/number-to-words-ru-2.0.1.tgz#b2a3cb935eb312048440939bae044b9a1a5431db"
+  integrity sha512-o0oc8S2IdERUE24TquKMmokkK0aR9AY8y0O8LrBzPcnIsZs47w4C3yKE1lwckIyHFO37DP8lDLLb6lPKRuLZAg==
+
 object-assign@4.1.1, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
