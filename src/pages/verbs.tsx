@@ -3,7 +3,8 @@ import styled from '@emotion/styled';
 import { pronouns } from '../pronouns';
 import { verbs } from '../verbs';
 import Layout from '../components/Layout';
-import Pronouns from '../components/Pronouns';
+import Table from '../components/Table';
+import { usePronounTable } from '../components/Pronouns';
 import {
 	openReversoConjugation,
 	openCoolConjugation,
@@ -35,6 +36,11 @@ const getPronounList = () => {
 };
 
 const defaultPronounList = getPronounList();
+
+const CenteredCard = styled(Card)`
+	display: flex;
+	justify-content: center;
+`;
 
 const H4 = styled.div`
 	margin-bottom: 4px;
@@ -102,7 +108,6 @@ const Index = styled.h2`
 
 const EachVerb: React.FC = () => {
 	const [pronounList, setPronounList] = React.useState(defaultPronounList);
-
 	const {
 		setIndex: setPronounPairIndex,
 		current: pronounPair,
@@ -113,19 +118,17 @@ const EachVerb: React.FC = () => {
 	} = useList({
 		list: pronounList,
 	});
-
 	const {
 		index,
 		current: verb,
 		setIndex,
-		next: nextVerb,
-		prev: prevVerb,
 		selectNext: selectNextVerb,
 		selectPrev: selectPrevVerb,
 	} = useList({
 		list: verbs,
 		loop: true,
 	});
+	const { headers, rows } = usePronounTable(pronounPair);
 
 	React.useEffect(() => {
 		const lastIndex = getLastIndex();
@@ -209,9 +212,9 @@ const EachVerb: React.FC = () => {
 					</button>
 				</VerbContainers>
 			</div>
-			<div className="flex space-evenly">
-				<div>
-					<div className="centered-text">
+			<Container>
+				<Col>
+					<Card style={{ flexDirection: 'column' }} className="centered-text">
 						<div>
 							<H4 className="centered-text">Specific links</H4>
 							<button className="button" onClick={onReversoConjugationClick}>
@@ -230,9 +233,9 @@ const EachVerb: React.FC = () => {
 								Context Reverson
 							</button>
 						</div>
-					</div>
-				</div>
-				<div>
+					</Card>
+				</Col>
+				<Col>
 					<div className="flex centered-flex ">
 						<Card style={{ width: '100%' }}>
 							<PronounPairs>
@@ -256,11 +259,23 @@ const EachVerb: React.FC = () => {
 							</PronounPairs>
 						</Card>
 					</div>
-					<Pronouns />
-				</div>
-			</div>
+					<CenteredCard>
+						<Table headers={headers} rows={rows} />
+					</CenteredCard>
+				</Col>
+			</Container>
 		</Layout>
 	);
 };
+
+const Container = styled.div`
+	max-width: 960px;
+	display: flex;
+	margin: 0 auto;
+`;
+
+const Col = styled.div`
+	flex: 1;
+`;
 
 export default EachVerb;
