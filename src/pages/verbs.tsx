@@ -22,14 +22,24 @@ const getLastIndex = () => {
 	return Number.isNaN(lastVerbIndex) ? 0 : lastVerbIndex;
 };
 
-const pronounCombinations = getCombinations(pronouns).filter(
-	([first, second]) => {
+const pronounCombinations = getCombinations(pronouns)
+	.filter(([first, second]) => {
+		const temp = !(
+			(first === 'я' && second === 'мы') ||
+			(second === 'я' && first === 'мы')
+		);
+		if (second === 'я') {
+			console.log(temp);
+		}
 		return !(
 			(first === 'я' && second === 'мы') ||
 			(second === 'я' && first === 'мы')
 		);
-	},
-);
+	})
+	.reduce((result, convination) => {
+		result.push(convination, convination.concat([]).reverse());
+		return result;
+	}, []);
 
 const getPronounList = () => {
 	return suffleItems(pronounCombinations);
@@ -177,11 +187,11 @@ const EachVerb: React.FC = () => {
 				event.preventDefault();
 			}
 			if (event.key === 'ArrowRight') {
-				selectNextVerb();
+				onNext();
 				event.preventDefault();
 			}
 			if (event.key === 'ArrowLeft') {
-				selectPrevVerb();
+				onPrevius();
 				event.preventDefault();
 			}
 		};
@@ -272,6 +282,10 @@ const Container = styled.div`
 	max-width: 960px;
 	display: flex;
 	margin: 0 auto;
+
+	@media (max-width: 500px) {
+		flex-direction: column;
+	}
 `;
 
 const Col = styled.div`
