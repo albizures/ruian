@@ -61,8 +61,6 @@ const createRandomList = <T extends unknown>(list: T[]): RandonList<T> => {
 			(item1, item2) => item1.weight - item2.weight,
 		);
 
-		console.table(weightedList);
-
 		return list[index];
 	};
 
@@ -102,6 +100,12 @@ const openCoolConjugation = (verb: string) => {
 
 const openReversoContext = () => {
 	open(`https://context.reverso.net/translation/russian-english`);
+};
+
+const opneAdjectiveCoolConjugator = (adjective: string) => {
+	const encodedAdjective = encodeURIComponent(adjective);
+
+	open(`https://cooljugator.com/rua/${encodedAdjective}`);
 };
 
 const openPages = (verb: string) => {
@@ -153,4 +157,5 @@ export {
 	getRandomElement,
 	getCombinations,
 	suffleItems,
+	opneAdjectiveCoolConjugator,
 };

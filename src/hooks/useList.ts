@@ -4,10 +4,16 @@ interface Config<T> {
 	initialIndex?: number;
 	list: T[];
 	loop?: boolean;
+	changeWithKeys?: boolean;
 }
 
 const useList = <T>(config: Config<T>) => {
-	const { initialIndex = 0, list, loop = false } = config;
+	const {
+		initialIndex = 0,
+		list,
+		loop = false,
+		changeWithKeys = false,
+	} = config;
 	const [index, setIndex] = React.useState(initialIndex);
 	const current = list[index];
 	const prev = list[index - 1];

@@ -13,6 +13,7 @@ import {
 	getCombinations,
 	suffleItems,
 } from '../utils';
+import { useLocalIndex } from '../hooks/useLocalIndex';
 import { Card } from '../components/elements';
 import { useList } from '../hooks/useList';
 
@@ -140,6 +141,7 @@ const EachVerb: React.FC = () => {
 	});
 	const { headers, rows } = usePronounTable(pronounPair);
 
+	const saveIndex = useLocalIndex('lastVerbIndex', setIndex);
 	React.useEffect(() => {
 		const lastIndex = getLastIndex();
 
@@ -150,14 +152,14 @@ const EachVerb: React.FC = () => {
 		selectNextVerb();
 		setPronounList(getPronounList());
 		setPronounPairIndex(0);
-		localStorage.setItem('lastVerbIndex', String(index));
+		saveIndex(index);
 	};
 
-	const onPrevius = () => {
+	const onPrevious = () => {
 		selectPrevVerb();
 		setPronounList(getPronounList());
 		setPronounPairIndex(0);
-		localStorage.setItem('lastVerbIndex', String(index));
+		saveIndex(index);
 	};
 
 	const onTranslationClick = () => {
@@ -191,7 +193,7 @@ const EachVerb: React.FC = () => {
 				event.preventDefault();
 			}
 			if (event.key === 'ArrowLeft') {
-				onPrevius();
+				onPrevious();
 				event.preventDefault();
 			}
 		};
@@ -210,7 +212,7 @@ const EachVerb: React.FC = () => {
 		<Layout>
 			<div className="centered-text">
 				<VerbContainers>
-					<button className="emoji button" onClick={onPrevius}>
+					<button className="emoji button" onClick={onPrevious}>
 						⬅️
 					</button>
 					<div>
