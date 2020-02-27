@@ -9,7 +9,7 @@ interface PropTypes {
 }
 
 const EndingTable: React.FC<PropTypes> = (props) => {
-	const endings = cases[props.case].endings[props.gender];
+	const endings = cases[props.case].nouns[props.gender];
 
 	if (endings.length === 0) {
 		return null;

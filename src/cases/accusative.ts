@@ -26,7 +26,7 @@ const accusative: Case = {
 		[Plural2nd]: 'вас',
 		[Plural3rd]: 'их',
 	},
-	endings: {
+	nouns: {
 		[Masculine]: [
 			['1', '4*'],
 			['-□', '-а'],

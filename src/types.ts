@@ -32,7 +32,12 @@ export interface Case {
 		[Pronouns.Plural2nd]: string;
 		[Pronouns.Plural3rd]: string;
 	};
-	endings: {
+	nouns: {
+		[Genders.Masculine]: CaseEndingRow[];
+		[Genders.Feminine]: CaseEndingRow[];
+		[Genders.Neuter]: CaseEndingRow[];
+	};
+	adjectives?: {
 		[Genders.Masculine]: CaseEndingRow[];
 		[Genders.Feminine]: CaseEndingRow[];
 		[Genders.Neuter]: CaseEndingRow[];

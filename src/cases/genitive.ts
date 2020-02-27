@@ -23,7 +23,7 @@ const genitive: Case = {
 		[Plural2nd]: 'вас',
 		[Plural3rd]: '(н)их',
 	},
-	endings: {
+	nouns: {
 		[Masculine]: [
 			['1', '2'],
 			['-□', '-а'],

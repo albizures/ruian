@@ -23,7 +23,7 @@ const instrumental: Case = {
 		[Plural2nd]: 'вами',
 		[Plural3rd]: '(н)ими',
 	},
-	endings: {
+	nouns: {
 		[Masculine]: [
 			['1', '5'],
 			['-□', '-ом'],

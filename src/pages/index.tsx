@@ -21,17 +21,17 @@ const Index: React.FC = () => (
 			<Row>
 				<Column>
 					<Box title="он">
-						<Table rows={cases[Genitive].endings[Masculine]} />
+						<Table rows={cases[Genitive].nouns[Masculine]} />
 					</Box>
 				</Column>
 				<Column>
 					<Box title="она">
-						<Table rows={cases[Genitive].endings[Feminine]} />
+						<Table rows={cases[Genitive].nouns[Feminine]} />
 					</Box>
 				</Column>
 				<Column>
 					<Box title="оно">
-						<Table rows={cases[Genitive].endings[Feminine]} />
+						<Table rows={cases[Genitive].nouns[Feminine]} />
 					</Box>
 				</Column>
 				<Column className="row-span-1">
@@ -44,17 +44,17 @@ const Index: React.FC = () => (
 			<Row>
 				<Column>
 					<Box title="он">
-						<Table rows={cases[Genitive].endings[Masculine]} />
+						<Table rows={cases[Genitive].nouns[Masculine]} />
 					</Box>
 				</Column>
 				<Column>
 					<Box title="она">
-						<Table rows={cases[Genitive].endings[Feminine]} />
+						<Table rows={cases[Genitive].nouns[Feminine]} />
 					</Box>
 				</Column>
 				<Column>
 					<Box title="оно">
-						<Table rows={cases[Genitive].endings[Feminine]} />
+						<Table rows={cases[Genitive].nouns[Feminine]} />
 					</Box>
 				</Column>
 				<Column className="row-span-1">

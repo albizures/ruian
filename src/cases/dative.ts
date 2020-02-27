@@ -23,7 +23,7 @@ const dative: Case = {
 		[Plural2nd]: 'вам',
 		[Plural3rd]: 'им',
 	},
-	endings: {
+	nouns: {
 		[Masculine]: [
 			['1', '3'],
 			['-□', '-у'],

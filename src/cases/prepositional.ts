@@ -23,7 +23,7 @@ const prepositional: Case = {
 		[Plural2nd]: 'вас',
 		[Plural3rd]: 'них',
 	},
-	endings: {
+	nouns: {
 		[Masculine]: [
 			['1', '6'],
 			['-□', '-е'],
