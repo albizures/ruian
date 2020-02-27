@@ -11,7 +11,7 @@ export default class CustomDocument extends Document {
 						content="initial-scale=1.0, width=device-width"
 					/>
 				</Head>
-				<body className="bg-gray-200">
+				<body className="bg-gray-200 pb-12">
 					<Main />
 					<NextScript />
 				</body>

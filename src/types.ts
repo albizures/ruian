@@ -1,7 +1,7 @@
 export enum Genders {
-	Masculine,
-	Feminine,
-	Neuter,
+	Masculine = 'Masculine',
+	Feminine = 'Feminine',
+	Neuter = 'Neuter',
 }
 
 type CaseEndingRow = [string, string];

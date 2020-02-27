@@ -80,16 +80,42 @@ const GlobalStyles = () => (
 	/>
 );
 
-const Container: React.FC = ({ children }) => (
-	<div className="container mx-auto">{children}</div>
+interface PropTypes {
+	className?: string;
+}
+
+const Container: React.FC<PropTypes> = ({ children, className = '' }) => (
+	<div className={`container mx-auto ${className}`}>{children}</div>
 );
 
-const Row: React.FC = ({ children }) => (
-	<div className="grid grid-cols-12 gap-4">{children}</div>
+const Row: React.FC<PropTypes> = ({ children, className = '' }) => (
+	<div className={`grid grid-cols-4 grid-rows-1 gap-4 ${className}`}>
+		{children}
+	</div>
 );
 
-const Column: React.FC = ({ children }) => (
-	<div className="col-span-6 sm:col-span-3 md:col-span-3">{children}</div>
+const Column: React.FC<PropTypes> = ({ children, className = '' }) => (
+	<div className={`col-span-4 sm:col-span-2 md:col-span-1 ${className}`}>
+		{children}
+	</div>
 );
 
-export { Flex, GlobalStyles, Card, Container, Row, Column };
+const H4 = styled.h4`
+	white-space: nowrap;
+	overflow: hidden;
+	&::after {
+		content: '';
+		margin-left: 16px;
+		background: rgba(50, 50, 50, 0.1);
+		height: 1px;
+		width: 100%;
+		display: inline-block;
+		vertical-align: middle;
+	}
+`;
+
+const Subtitle: React.FC = ({ children }) => (
+	<h3 className="text-3xl mt-4 mb-2 capitalize">{children}</h3>
+);
+
+export { Flex, GlobalStyles, Card, Container, Row, Column, H4, Subtitle };
