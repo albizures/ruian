@@ -80,4 +80,16 @@ const GlobalStyles = () => (
 	/>
 );
 
-export { Flex, GlobalStyles, Card };
+const Container: React.FC = ({ children }) => (
+	<div className="container mx-auto">{children}</div>
+);
+
+const Row: React.FC = ({ children }) => (
+	<div className="grid grid-cols-12 gap-4">{children}</div>
+);
+
+const Column: React.FC = ({ children }) => (
+	<div className="col-span-6 sm:col-span-3 md:col-span-3">{children}</div>
+);
+
+export { Flex, GlobalStyles, Card, Container, Row, Column };

@@ -17,14 +17,14 @@ interface PropTypes {
 
 const rows = Object.keys(Pronouns).map((key) => {
 	const pronoun = Pronouns[key];
-	return {
-		1: pronoun,
-		[Cases.Genitive]: cases[Cases.Genitive].pronouns[pronoun],
-		[Cases.Dative]: cases[Cases.Dative].pronouns[pronoun],
-		[Cases.Accusative]: cases[Cases.Accusative].pronouns[pronoun],
-		[Cases.Instrumental]: cases[Cases.Instrumental].pronouns[pronoun],
-		[Cases.Prepositional]: cases[Cases.Prepositional].pronouns[pronoun],
-	};
+	return [
+		[pronoun],
+		cases[Cases.Genitive].pronouns[pronoun],
+		cases[Cases.Dative].pronouns[pronoun],
+		cases[Cases.Accusative].pronouns[pronoun],
+		cases[Cases.Instrumental].pronouns[pronoun],
+		cases[Cases.Prepositional].pronouns[pronoun],
+	];
 });
 
 const usePronounTable = (filter?: string[]) => {

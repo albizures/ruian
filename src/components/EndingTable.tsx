@@ -4,20 +4,21 @@ import { Genders, Cases } from '../types';
 import Table from './Table';
 
 interface PropTypes {
-  case: Cases;
-  gender: Genders;
+	case: Cases;
+	gender: Genders;
 }
 
 const EndingTable: React.FC<PropTypes> = (props) => {
-  const rows = cases[props.case].endings[props.gender];
+	const endings = cases[props.case].endings[props.gender];
 
-  if (rows.length === 0) {
-    return null;
-  }
+	if (endings.length === 0) {
+		return null;
+	}
 
-  const headers = Object.keys(rows[0]);
+	const headers = endings[0];
+	const rows = endings.slice(1);
 
-  return <Table headers={headers} rows={rows} />;
+	return <Table headers={headers} rows={rows} />;
 };
 
 export default EndingTable;

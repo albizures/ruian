@@ -4,9 +4,7 @@ export enum Genders {
 	Neuter,
 }
 
-export interface CaseEndingRow {
-	[key: string]: string;
-}
+type CaseEndingRow = [string, string];
 
 export interface Notes {
 	[key: string]: string;
