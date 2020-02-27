@@ -2,7 +2,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { pronouns } from '../pronouns';
 import { verbs } from '../verbs';
-import Layout from '../components/Layout';
 import Table from '../components/Table';
 import { usePronounTable } from '../components/Pronouns';
 import {
@@ -209,7 +208,7 @@ const EachVerb: React.FC = () => {
 	]);
 
 	return (
-		<Layout>
+		<>
 			<div className="centered-text">
 				<VerbContainers>
 					<button className="emoji button" onClick={onPrevious}>
@@ -276,7 +275,7 @@ const EachVerb: React.FC = () => {
 					</CenteredCard>
 				</Col>
 			</Container>
-		</Layout>
+		</>
 	);
 };
 

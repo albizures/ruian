@@ -1,5 +1,4 @@
 import React from 'react';
-import Layout from '../components/Layout';
 import { opneAdjectiveCoolConjugator, openReversoContext } from '../utils';
 import { useList } from '../hooks/useList';
 import { useLocalIndex } from '../hooks/useLocalIndex';
@@ -51,24 +50,22 @@ const Adjectives: React.FC = () => {
 	};
 
 	return (
-		<Layout>
-			<div className="centered-text">
-				<button className="emoji button" onClick={onPrevious}>
-					⬅️
-				</button>
-				<h1>{adjective}</h1>
-				<button className="emoji button" onClick={onNext}>
-					➡️
-				</button>
-				<br />
-				<button className="button" onClick={onCoolConjugatorClick}>
-					Context Reverson
-				</button>
-				<button className="button" onClick={openReversoContext}>
-					Context Reverson
-				</button>
-			</div>
-		</Layout>
+		<div className="centered-text">
+			<button className="emoji button" onClick={onPrevious}>
+				⬅️
+			</button>
+			<h1>{adjective}</h1>
+			<button className="emoji button" onClick={onNext}>
+				➡️
+			</button>
+			<br />
+			<button className="button" onClick={onCoolConjugatorClick}>
+				Context Reverson
+			</button>
+			<button className="button" onClick={openReversoContext}>
+				Context Reverson
+			</button>
+		</div>
 	);
 };
 

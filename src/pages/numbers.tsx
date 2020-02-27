@@ -1,6 +1,5 @@
 import React from 'react';
 import { convert } from 'number-to-words-ru';
-import Layout from '../components/Layout';
 import { useOnChange } from '../hooks';
 
 const getNumberWords = (num: number) => {
@@ -78,7 +77,7 @@ const Numbers: React.FC = () => {
 	}, []);
 
 	return (
-		<Layout>
+		<>
 			<button onClick={onPlay}>play</button>
 			<div>
 				<label htmlFor="decimals">decimals:</label>
@@ -97,7 +96,7 @@ const Numbers: React.FC = () => {
 				<label htmlFor="max">max:</label>
 				<input type="number" id="max" value={max} onChange={onChangeMax} />
 			</div>
-		</Layout>
+		</>
 	);
 };
 
