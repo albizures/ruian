@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import { opneAdjectiveCoolConjugator } from '../utils';
+import { opneAdjectiveCoolConjugator, openReversoContext } from '../utils';
 import { useList } from '../hooks/useList';
 import { useLocalIndex } from '../hooks/useLocalIndex';
 import { adjectives } from '../adjectives';
@@ -60,7 +60,11 @@ const Adjectives: React.FC = () => {
 				<button className="emoji button" onClick={onNext}>
 					➡️
 				</button>
+				<br />
 				<button className="button" onClick={onCoolConjugatorClick}>
+					Context Reverson
+				</button>
+				<button className="button" onClick={openReversoContext}>
 					Context Reverson
 				</button>
 			</div>
