@@ -76,6 +76,32 @@ const GlobalStyles = () => (
 			* {
 				box-sizing: border-box;
 			}
+
+			.github-corner:hover .octo-arm {
+				animation: octocat-wave 560ms ease-in-out;
+			}
+			@keyframes octocat-wave {
+				0%,
+				100% {
+					transform: rotate(0);
+				}
+				20%,
+				60% {
+					transform: rotate(-25deg);
+				}
+				40%,
+				80% {
+					transform: rotate(10deg);
+				}
+			}
+			@media (max-width: 500px) {
+				.github-corner:hover .octo-arm {
+					animation: none;
+				}
+				.github-corner .octo-arm {
+					animation: octocat-wave 560ms ease-in-out;
+				}
+			}
 		`}
 	/>
 );
@@ -85,7 +111,7 @@ interface PropTypes {
 }
 
 const Container: React.FC<PropTypes> = ({ children, className = '' }) => (
-	<div className={`container mx-auto ${className}`}>{children}</div>
+	<div className={`container px-4 mx-auto ${className}`}>{children}</div>
 );
 
 const Row: React.FC<PropTypes> = ({ children, className = '' }) => (
@@ -114,8 +140,22 @@ const H4 = styled.h4`
 	}
 `;
 
-const Subtitle: React.FC = ({ children }) => (
-	<h3 className="text-3xl mt-4 mb-2 capitalize">{children}</h3>
+const Title: React.FC = ({ children }) => (
+	<h2 className="text-4xl text-center pt-8 font-thin capitalize">{children}</h2>
 );
 
-export { Flex, GlobalStyles, Card, Container, Row, Column, H4, Subtitle };
+const Subtitle: React.FC<PropTypes> = ({ children, className = 'mt-12' }) => (
+	<h3 className={`text-3xl capitalize ${className}`}>{children}</h3>
+);
+
+export {
+	Flex,
+	GlobalStyles,
+	Card,
+	Container,
+	Row,
+	Column,
+	H4,
+	Subtitle,
+	Title,
+};
