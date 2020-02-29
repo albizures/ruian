@@ -6,10 +6,6 @@ export enum Genders {
 
 type CaseEndingRow = [string, string];
 
-export interface Notes {
-	[key: string]: string;
-}
-
 export enum Pronouns {
 	Singular1st = 'я',
 	Singular2nd = 'ты',
@@ -20,9 +16,19 @@ export enum Pronouns {
 	Plural3rd = 'они',
 }
 
+interface MutipleEndings {
+	animate: CaseEndingRow[];
+	inanimate: CaseEndingRow[];
+}
+
+export interface Endings {
+	[Genders.Masculine]: CaseEndingRow[] | MutipleEndings;
+	[Genders.Feminine]: CaseEndingRow[];
+	[Genders.Neuter]: CaseEndingRow[];
+}
+
 export interface Case {
 	name: string;
-	notes?: Notes;
 	pronouns: {
 		[Pronouns.Singular1st]: string;
 		[Pronouns.Singular2nd]: string;
@@ -32,16 +38,8 @@ export interface Case {
 		[Pronouns.Plural2nd]: string;
 		[Pronouns.Plural3rd]: string;
 	};
-	nouns: {
-		[Genders.Masculine]: CaseEndingRow[];
-		[Genders.Feminine]: CaseEndingRow[];
-		[Genders.Neuter]: CaseEndingRow[];
-	};
-	adjectives?: {
-		[Genders.Masculine]: CaseEndingRow[];
-		[Genders.Feminine]: CaseEndingRow[];
-		[Genders.Neuter]: CaseEndingRow[];
-	};
+	nouns: Endings;
+	adjectives: Endings;
 }
 
 export enum Cases {

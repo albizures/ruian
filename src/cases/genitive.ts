@@ -13,7 +13,7 @@ const {
 const { Masculine, Feminine, Neuter } = Genders;
 
 const genitive: Case = {
-	name: 'Родительный падеж',
+	name: 'родительный падеж',
 	pronouns: {
 		[Singular1st]: 'меня',
 		[Singular2nd]: 'тебя',
@@ -42,6 +42,23 @@ const genitive: Case = {
 			['1', '2'],
 			['-о', '-а'],
 			['-е', '-я'],
+		],
+	},
+	adjectives: {
+		[Masculine]: [
+			['1', '2'],
+			['-ый', '-ого'],
+			['-ий', '-его'],
+		],
+		[Feminine]: [
+			['1', '2'],
+			['-ая', '-ой'],
+			['-яя', '-ей'],
+		],
+		[Neuter]: [
+			['1', '2'],
+			['-ое', '-ого'],
+			['-ее', '-его'],
 		],
 	},
 };

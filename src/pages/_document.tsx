@@ -3,7 +3,7 @@ import Document, { Head, Main, NextScript } from 'next/document';
 export default class CustomDocument extends Document {
 	render() {
 		return (
-			<html lang="en-US">
+			<html lang="ru">
 				<Head>
 					<title>Ruina</title>
 					<meta

@@ -13,7 +13,7 @@ const {
 const { Masculine, Feminine, Neuter } = Genders;
 
 const dative: Case = {
-	name: 'Дательный падеж',
+	name: 'дательный падеж',
 	pronouns: {
 		[Singular1st]: 'мне',
 		[Singular2nd]: 'тебе',
@@ -40,6 +40,23 @@ const dative: Case = {
 			['1', '3'],
 			['-о', '-у'],
 			['-е', '-ю'],
+		],
+	},
+	adjectives: {
+		[Masculine]: [
+			['1', '3'],
+			['-ий', '-ому'],
+			['-ий', '-ему'],
+		],
+		[Feminine]: [
+			['1', '3'],
+			['-ая', '-ой'],
+			['-яя', '-ей'],
+		],
+		[Neuter]: [
+			['1', '3'],
+			['-ое', '-ому'],
+			['-ее', '-ему'],
 		],
 	},
 };

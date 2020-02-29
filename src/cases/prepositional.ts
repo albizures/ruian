@@ -13,7 +13,7 @@ const {
 const { Masculine, Feminine, Neuter } = Genders;
 
 const prepositional: Case = {
-	name: 'Предложный падеж',
+	name: 'предложный падеж',
 	pronouns: {
 		[Singular1st]: 'мне',
 		[Singular2nd]: 'тебе',
@@ -43,6 +43,23 @@ const prepositional: Case = {
 			['-о', '-е'],
 			['-е', '-е'],
 			['-ие', '-ии'],
+		],
+	},
+	adjectives: {
+		[Masculine]: [
+			['1', '6'],
+			['-ый', '-ом'],
+			['-ий', '-ем'],
+		],
+		[Feminine]: [
+			['1', '6'],
+			['-ая', '-ой'],
+			['-яя', '-ей'],
+		],
+		[Neuter]: [
+			['1', '6'],
+			['-ое', '-ом'],
+			['-ее', '-ем'],
 		],
 	},
 };

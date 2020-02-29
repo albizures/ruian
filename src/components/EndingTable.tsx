@@ -2,6 +2,7 @@ import React from 'react';
 import { cases } from '../cases';
 import { Genders, Cases } from '../types';
 import Table from './Table';
+import { getAnimEndings } from '../utils';
 
 interface PropTypes {
 	case: Cases;
@@ -9,7 +10,10 @@ interface PropTypes {
 }
 
 const EndingTable: React.FC<PropTypes> = (props) => {
-	const endings = cases[props.case].nouns[props.gender];
+	const endings =
+		props.gender === Genders.Masculine
+			? getAnimEndings(cases[props.case].nouns)
+			: cases[props.case].nouns[props.gender];
 
 	if (endings.length === 0) {
 		return null;

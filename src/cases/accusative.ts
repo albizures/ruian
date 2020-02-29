@@ -14,9 +14,6 @@ const { Masculine, Feminine, Neuter } = Genders;
 
 const accusative: Case = {
 	name: 'винительный падеж',
-	notes: {
-		'*': 'only for animated things',
-	},
 	pronouns: {
 		[Singular1st]: 'меня',
 		[Singular2nd]: 'тебя',
@@ -28,7 +25,7 @@ const accusative: Case = {
 	},
 	nouns: {
 		[Masculine]: [
-			['1', '4*'],
+			['1', '4'],
 			['-□', '-а'],
 			['-й', '-я'],
 			['-ь', '-я'],
@@ -37,6 +34,22 @@ const accusative: Case = {
 			['1', '4'],
 			['-а', '-у'],
 			['-я', '-ю'],
+		],
+		[Neuter]: [],
+	},
+	adjectives: {
+		[Masculine]: {
+			animate: [
+				['1', '4'],
+				['-ый', '-ого'],
+				['-ий', '-его'],
+			],
+			inanimate: [],
+		},
+		[Feminine]: [
+			['1', '4'],
+			['-ая', '-ую'],
+			['-яя', '-юю'],
 		],
 		[Neuter]: [],
 	},
