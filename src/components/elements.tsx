@@ -121,9 +121,7 @@ const Row: React.FC<PropTypes> = ({ children, className = '' }) => (
 );
 
 const Column: React.FC<PropTypes> = ({ children, className = '' }) => (
-	<div className={`col-span-4 sm:col-span-2 md:col-span-1 ${className}`}>
-		{children}
-	</div>
+	<div className={`col-span-2 md:col-span-1 ${className}`}>{children}</div>
 );
 
 const H4 = styled.h4`
