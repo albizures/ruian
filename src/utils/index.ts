@@ -1,4 +1,7 @@
 import { verbs } from '../verbs';
+import { Genders, Case, Endings } from '../types';
+
+const { Masculine } = Genders;
 
 interface WeightedItem<T extends unknown> {
 	value: T;
@@ -146,6 +149,26 @@ const suffleItems = <T>(items: T[]): T[] => {
 	return suffledItems;
 };
 
+const getAnimEndings = (endings: Endings) => {
+	const masculineEndings = endings[Masculine];
+
+	if (Array.isArray(masculineEndings)) {
+		return masculineEndings;
+	}
+
+	return masculineEndings.animate;
+};
+
+const getInanimEndings = (endings: Endings) => {
+	const masculineEndings = endings[Masculine];
+
+	if (Array.isArray(masculineEndings)) {
+		return masculineEndings;
+	}
+
+	return masculineEndings.inanimate;
+};
+
 export {
 	eachVerb,
 	openPages,
@@ -157,5 +180,7 @@ export {
 	getRandomElement,
 	getCombinations,
 	suffleItems,
+	getAnimEndings,
+	getInanimEndings,
 	opneAdjectiveCoolConjugator,
 };

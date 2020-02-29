@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 interface PropTypes {
 	headers?: string[];
 	rows: string[][];
+	emptyFallback?: React.ReactNode;
 }
 
 const Td = styled.td`
@@ -22,7 +23,6 @@ const Tr = styled.tr``;
 
 const StyledTable = styled.table`
 	border-collapse: collapse;
-	margin-right: 8px;
 	overflow: auto;
 `;
 
@@ -39,13 +39,15 @@ const getHeaders = (props: PropTypes) => {
 };
 
 const Table: React.FC<PropTypes> = (props) => {
+	const { emptyFallback = null } = props;
 	const { rows, headers } = getHeaders(props);
+
 	if (rows.length === 0) {
-		return null;
+		return <>{emptyFallback}</>;
 	}
 
 	return (
-		<StyledTable className="w-full max-w-xs">
+		<StyledTable className="w-full max-w-xs mx-auto">
 			<thead className="bg-gray-100">
 				<Tr>
 					{headers.map((header, index) => (
