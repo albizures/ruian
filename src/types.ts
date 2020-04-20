@@ -25,6 +25,7 @@ export interface Endings {
 	[Genders.Masculine]: CaseEndingRow[] | MutipleEndings;
 	[Genders.Feminine]: CaseEndingRow[];
 	[Genders.Neuter]: CaseEndingRow[];
+	Plural?: CaseEndingRow[];
 }
 
 export interface Case {

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 interface PropTypes {
 	headers?: string[];
-	rows: string[][];
+	rows?: string[][];
 	emptyFallback?: React.ReactNode;
 }
 
@@ -32,6 +32,10 @@ const getHeaders = (props: PropTypes) => {
 		return props;
 	}
 
+	if (!rows) {
+		return {};
+	}
+
 	return {
 		headers: rows[0],
 		rows: rows.slice(1),
@@ -42,7 +46,7 @@ const Table: React.FC<PropTypes> = (props) => {
 	const { emptyFallback = null } = props;
 	const { rows, headers } = getHeaders(props);
 
-	if (rows.length === 0) {
+	if (!rows || rows.length === 0) {
 		return <>{emptyFallback}</>;
 	}
 

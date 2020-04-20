@@ -9,6 +9,20 @@ const Layout: React.FC = (props) => {
 			<Head>
 				<title>Ruina</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+				{process.env.NODE_ENV === 'production' && (
+					<>
+						<script
+							async
+							src="https://www.googletagmanager.com/gtag/js?id=UA-113899183-4"
+						></script>
+						<script
+							dangerouslySetInnerHTML={{
+								__html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+							gtag('js',new Date());gtag('config','UA-113899183-4')`,
+							}}
+						/>
+					</>
+				)}
 			</Head>
 			<GlobalStyles />
 			<a
