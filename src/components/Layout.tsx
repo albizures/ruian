@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Anchor from './Anchor';
 import { GlobalStyles } from '../components/elements';
 
 const Layout: React.FC = (props) => {
@@ -60,6 +61,14 @@ const Layout: React.FC = (props) => {
 					></path>
 				</svg>
 			</a>
+
+			<div className="mb-4">
+				<h1 className="text-6xl text-center text-gray-800">Ruian</h1>
+				<div className="flex justify-around flex-wrap md:max-w-md mx-auto">
+					<Anchor href="/">Падежи</Anchor>
+					<Anchor href="/pronouns">местоимения</Anchor>
+				</div>
+			</div>
 
 			{children}
 		</>
