@@ -37,6 +37,10 @@ const accusative: Case = {
 			['-ь', '-ь'],
 		],
 		[Neuter]: [],
+		Plural: {
+			animate: [],
+			inanimate: [],
+		},
 	},
 	adjectives: {
 		[Masculine]: {
@@ -53,6 +57,10 @@ const accusative: Case = {
 			['-яя', '-юю'],
 		],
 		[Neuter]: [],
+		Plural: {
+			animate: [['', '-ых, -их']],
+			inanimate: [],
+		},
 	},
 };
 
