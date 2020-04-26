@@ -4,7 +4,7 @@ export enum Genders {
 	Neuter = 'Neuter',
 }
 
-type CaseEndingRow = [string, string];
+export type CaseEndingRow = [string, string];
 
 export enum Pronouns {
 	Singular1st = 'я',
@@ -16,7 +16,7 @@ export enum Pronouns {
 	Plural3rd = 'они',
 }
 
-interface MutipleEndings {
+export interface MutipleEndings {
 	animate: CaseEndingRow[];
 	inanimate: CaseEndingRow[];
 }
@@ -25,7 +25,7 @@ export interface Endings {
 	[Genders.Masculine]: CaseEndingRow[] | MutipleEndings;
 	[Genders.Feminine]: CaseEndingRow[];
 	[Genders.Neuter]: CaseEndingRow[];
-	Plural?: CaseEndingRow[];
+	Plural?: CaseEndingRow[] | MutipleEndings;
 }
 
 export interface Case {

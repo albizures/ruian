@@ -10,7 +10,7 @@ interface PropTypes {
 	name: Cases;
 }
 
-const { Feminine, Neuter } = Genders;
+const { Feminine, Neuter, Masculine } = Genders;
 
 const emptyFallback = <p className="text-center">как один</p>;
 const workInProgressFallback = (
@@ -33,7 +33,7 @@ const CaseTables: React.FC<PropTypes> = ({ name }) => {
 							<Box title="он - кого?">
 								<Table
 									emptyFallback={emptyFallback}
-									rows={getAnimEndings(data.nouns)}
+									rows={getAnimEndings(data.nouns[Masculine])}
 								/>
 							</Box>
 						</>
@@ -41,7 +41,7 @@ const CaseTables: React.FC<PropTypes> = ({ name }) => {
 						<Box title="он">
 							<Table
 								emptyFallback={emptyFallback}
-								rows={getAnimEndings(data.nouns)}
+								rows={getAnimEndings(data.nouns[Masculine])}
 							/>
 						</Box>
 					)}
@@ -57,12 +57,29 @@ const CaseTables: React.FC<PropTypes> = ({ name }) => {
 					</Box>
 				</Column>
 				<Column className="row-span-1">
-					<Box className="text-center" title="они">
-						<Table
-							emptyFallback={workInProgressFallback}
-							rows={data.nouns.Plural}
-						/>
-					</Box>
+					{name === Cases.Accusative ? (
+						<>
+							<Box title="они - кого?">
+								<Table
+									emptyFallback={emptyFallback}
+									rows={getAnimEndings(data.nouns.Plural)}
+								/>
+							</Box>
+							<Box title="он - что?">
+								<Table
+									emptyFallback={emptyFallback}
+									rows={getInanimEndings(data.nouns.Plural)}
+								/>
+							</Box>
+						</>
+					) : (
+						<Box title="они">
+							<Table
+								emptyFallback={emptyFallback}
+								rows={getAnimEndings(data.nouns.Plural)}
+							/>
+						</Box>
+					)}
 				</Column>
 			</Row>
 			<Subtitle>прилагательное</Subtitle>
@@ -73,13 +90,13 @@ const CaseTables: React.FC<PropTypes> = ({ name }) => {
 							<Box title="он - кого?">
 								<Table
 									emptyFallback={emptyFallback}
-									rows={getAnimEndings(data.adjectives)}
+									rows={getAnimEndings(data.adjectives[Masculine])}
 								/>
 							</Box>
 							<Box title="он - что?">
 								<Table
 									emptyFallback={emptyFallback}
-									rows={getInanimEndings(data.adjectives)}
+									rows={getInanimEndings(data.adjectives[Masculine])}
 								/>
 							</Box>
 						</>
@@ -87,7 +104,7 @@ const CaseTables: React.FC<PropTypes> = ({ name }) => {
 						<Box title="он">
 							<Table
 								emptyFallback={emptyFallback}
-								rows={getAnimEndings(data.adjectives)}
+								rows={getAnimEndings(data.adjectives[Masculine])}
 							/>
 						</Box>
 					)}
@@ -109,12 +126,29 @@ const CaseTables: React.FC<PropTypes> = ({ name }) => {
 					</Box>
 				</Column>
 				<Column className="row-span-1">
-					<Box className="text-center" title="они">
-						<Table
-							emptyFallback={workInProgressFallback}
-							rows={data.adjectives.Plural}
-						/>
-					</Box>
+					{name === Cases.Accusative ? (
+						<>
+							<Box title="они - кого?">
+								<Table
+									emptyFallback={emptyFallback}
+									rows={getAnimEndings(data.adjectives.Plural)}
+								/>
+							</Box>
+							<Box title="он - что?">
+								<Table
+									emptyFallback={emptyFallback}
+									rows={getInanimEndings(data.adjectives.Plural)}
+								/>
+							</Box>
+						</>
+					) : (
+						<Box title="они">
+							<Table
+								emptyFallback={emptyFallback}
+								rows={getAnimEndings(data.adjectives.Plural)}
+							/>
+						</Box>
+					)}
 				</Column>
 			</Row>
 		</>

@@ -1,5 +1,5 @@
 import { verbs } from '../verbs';
-import { Genders, Case, Endings } from '../types';
+import { Genders, Endings, MutipleEndings, CaseEndingRow } from '../types';
 
 const { Masculine } = Genders;
 
@@ -149,24 +149,28 @@ const suffleItems = <T>(items: T[]): T[] => {
 	return suffledItems;
 };
 
-const getAnimEndings = (endings: Endings) => {
-	const masculineEndings = endings[Masculine];
-
-	if (Array.isArray(masculineEndings)) {
-		return masculineEndings;
+const getAnimEndings = (endings: CaseEndingRow[] | MutipleEndings) => {
+	if (!endings) {
+		return [];
 	}
 
-	return masculineEndings.animate;
+	if (Array.isArray(endings)) {
+		return endings;
+	}
+
+	return endings.animate;
 };
 
-const getInanimEndings = (endings: Endings) => {
-	const masculineEndings = endings[Masculine];
-
-	if (Array.isArray(masculineEndings)) {
-		return masculineEndings;
+const getInanimEndings = (endings: CaseEndingRow[] | MutipleEndings) => {
+	if (!endings) {
+		return [];
 	}
 
-	return masculineEndings.inanimate;
+	if (Array.isArray(endings)) {
+		return endings;
+	}
+
+	return endings.inanimate;
 };
 
 export {
