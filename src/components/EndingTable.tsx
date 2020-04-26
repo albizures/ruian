@@ -12,7 +12,7 @@ interface PropTypes {
 const EndingTable: React.FC<PropTypes> = (props) => {
 	const endings =
 		props.gender === Genders.Masculine
-			? getAnimEndings(cases[props.case].nouns)
+			? getAnimEndings(cases[props.case].nouns[Genders.Masculine])
 			: cases[props.case].nouns[props.gender];
 
 	if (endings.length === 0) {
