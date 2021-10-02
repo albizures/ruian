@@ -73,3 +73,5 @@ const Doc1 = () => {
 		</div>
 	);
 };
+
+export default Doc1;
