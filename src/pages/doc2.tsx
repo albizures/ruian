@@ -1,8 +1,9 @@
 import React from 'react';
+import { Container } from '../components/elements';
 
 const Doc1 = () => {
 	return (
-		<div>
+		<Container>
 			<h1>Электрический ток проводимости</h1>
 			<p>
 				Электрические заряды, имеющиеся в различных телах, участвуют в
@@ -63,7 +64,7 @@ const Doc1 = () => {
 				аноду
 			</p>
 			<p>Краткосрочные электрические токи наблюдаются и в диэлектриках</p>
-		</div>
+		</Container>
 	);
 };
 

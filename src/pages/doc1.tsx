@@ -1,8 +1,9 @@
 import React from 'react';
+import { Container } from '../components/elements';
 
 const Doc1 = () => {
 	return (
-		<div>
+		<Container>
 			<h1>И. И. СИКОРСКИЙ</h1>
 
 			<p>
@@ -70,7 +71,7 @@ const Doc1 = () => {
 				различных летательных аппаратов. 72 из них выпускались серийно, 2 были
 				доведены до стадии опытных образцов и лишь 4 остались на бумаге.
 			</p>
-		</div>
+		</Container>
 	);
 };
 
